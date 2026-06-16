@@ -1,0 +1,21 @@
+/*
+ * styles.css — Estilos globales de la aplicación
+ *
+ * Qué va aquí:
+ *   - Reset o normalize (eliminar estilos por defecto del navegador)
+ *   - Variables CSS globales: colores, fuentes, espaciados
+ *       Ejemplo: --color-fondo, --color-texto, --fuente-base
+ *   - Estilos de layout general: body, contenedores, navegación
+ *   - Estilos de la grilla semanal: columnas de días, filas de horas,
+ *       bloques de materia con posición y altura proporcional
+ *   - Estilos de formularios
+ *   - Estilos de alertas de conflicto
+ *   - Clases utilitarias reutilizables
+ *
+ * Qué NO va aquí:
+ *   - Los colores individuales de cada materia (se asignan dinámicamente
+ *     desde JS usando el campo "color" de cada materia)
+ *
+ * Consejo: define primero las variables CSS con --nombre-variable.
+ * Cambiar el diseño completo se reduce a editar esas pocas líneas.
+ */
