@@ -23,3 +23,35 @@ Funciones que debes implementar aquí:
 Regla: funciones puras. No leen ni escriben archivos. Solo reciben datos
 y devuelven un resultado. Eso las hace fáciles de probar.
 """
+
+from app.models import Bloque, Materia
+from app.utils.tiempo import hora_a_minutos
+
+
+def bloques_se_solapan(bloque_a: Bloque, bloque_b: Bloque) -> bool:
+    # Paso 1: Verificar si los días son distintos
+    if bloque_a.dia != bloque_b.dia:
+        return False
+
+    # Paso 2: Convertir horas a minutos
+    a_inicio = hora_a_minutos(bloque_a.hora_inicio)
+    a_fin = hora_a_minutos(bloque_a.hora_fin)
+    b_inicio = hora_a_minutos(bloque_b.hora_inicio)
+    b_fin = hora_a_minutos(bloque_b.hora_fin)
+
+    # Paso 3: Verificar solapamiento de intervalos
+    return a_inicio < b_fin and b_inicio < a_fin
+
+
+def detectar_conflictos(lista_bloques: list[Bloque]) -> list[tuple[Bloque, Bloque]]:
+    conflictos = []
+    n = len(lista_bloques)
+
+    # Comparar cada par de bloques sin repetir
+    for i in range(n):
+        for j in range(i + 1, n):
+            bloque_a = lista_bloques[i]
+            bloque_b = lista_bloques[j]
+            if bloques_se_solapan(bloque_a, bloque_b):
+                conflictos.append((bloque_a, bloque_b))
+    return conflictos

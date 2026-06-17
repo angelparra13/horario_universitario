@@ -1,6 +1,13 @@
 # requirements.txt — Dependencias del backend
 # Instálalas con: pip install -r requirements.txt
 #
-# fastapi   — Framework para construir la API REST
-# uvicorn   — Servidor para correr FastAPI
-# pydantic  — Validación de datos (viene incluido con FastAPI)
+fastapi   
+# Framework para construir la API REST
+uvicorn   
+#Servidor para correr FastAPI
+pydantic  
+#Validación de datos (viene incluido con FastAPI)
+pytest    
+# Framework para pruebas
+httpx     
+# Cliente HTTP para pruebas de integración
