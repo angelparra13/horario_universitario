@@ -37,7 +37,7 @@ class MateriaBase(BaseModel):
     color: str | None = Field(None, example="#FF5733")
 
 class BloqueBase(BaseModel):
-    id_materia: str = Field(..., example="MAT101")
+    id_materia: int = Field(..., example=1)
     dia: str = Field(..., example="Lunes")
     hora_inicio: str = Field(..., example="08:30")
     hora_fin: str = Field(..., example="10:00")
@@ -51,7 +51,7 @@ class BloqueCreate(BloqueBase):
 
 class MateriaRead(MateriaBase):
     id: int = Field(..., example=1)
-    bloques: list[BloqueBase] = Field(default=[], example=[{"id_materia": "MAT101", "dia": "Lunes", "hora_inicio":
+    bloques: list[BloqueBase] = Field(default=[], example=[{"id_materia": 1, "dia": "Lunes", "hora_inicio":
                                                             "08:30", "hora_fin": "10:00", "salon": "Aula 101"}])
 
 class BloqueRead(BloqueBase):
