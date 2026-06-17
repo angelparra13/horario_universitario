@@ -20,7 +20,7 @@ uno por uno. No intentes escribir todas las pruebas a la vez.
 """
 
 from fastapi.testclient import TestClient
-from app.main import app
+from main import app
 
 client = TestClient(app)
 
@@ -76,7 +76,7 @@ def test_eliminar_materia_con_bloques():
     
     # Crear bloque asociado a esa materia
     bloque_response = client.post("/bloques/", json={
-        "materia_id": materia_id,
+        "id_materia": materia_id,
         "dia": "Lunes",
         "hora_inicio": "08:00",
         "hora_fin": "10:00"
