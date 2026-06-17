@@ -27,3 +27,32 @@ Modelos que debes definir aquí:
 
 Regla: este archivo solo describe datos. No tiene lógica ni accede al disco.
 """
+
+from pydantic import BaseModel, Field
+
+class MateriaBase(BaseModel):
+    nombre: str = Field(..., example="Matemáticas")
+    codigo: str | None = Field(None, example="MAT101")
+    creditos: int | None = Field(None, example=4)
+    color: str | None = Field(None, example="#FF5733")
+
+class BloqueBase(BaseModel):
+    id_materia: str = Field(..., example="MAT101")
+    dia: str = Field(..., example="Lunes")
+    hora_inicio: str = Field(..., example="08:30")
+    hora_fin: str = Field(..., example="10:00")
+    salon: str | None = Field(None, example="Aula 101")
+
+class MateriaCreate(MateriaBase):
+    pass
+
+class BloqueCreate(BloqueBase):
+    pass
+
+class MateriaRead(MateriaBase):
+    id: int = Field(..., example=1)
+    bloques: list[BloqueBase] = Field(default=[], example=[{"id_materia": "MAT101", "dia": "Lunes", "hora_inicio":
+                                                            "08:30", "hora_fin": "10:00", "salon": "Aula 101"}])
+
+class BloqueRead(BloqueBase):
+    id: int = Field(..., example=1)
